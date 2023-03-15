@@ -1,0 +1,23 @@
+<form [formGroup]="apiForm" (ngSubmit)="onSubmit()">
+    <div>
+        <label>Title:</label>
+        <input id="title" type="text" formControlName="title">
+    </div>
+
+    <div>
+        <label>Summary:</label>
+        <input id="summary" type="text" formControlName="summary">
+    </div>
+
+    <div>
+        <label>Author:</label>
+        <input id="author" type="text" formControlName="author">
+    </div>
+
+    <p>
+      <button type="submit">Submit</button>
+    </p>
+   
+  </form>
+   
+  {{this.apiForm.value | json}}
