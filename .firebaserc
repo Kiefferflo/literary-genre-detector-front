@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "literary-genre-detector": {
+      "hosting": {
+        "literary-genre-detector-front": [
+          "literary-genre-detector"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "literary-genre-detector"
+  }
+}

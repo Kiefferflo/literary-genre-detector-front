@@ -1,23 +1,21 @@
-<form [formGroup]="apiForm" (ngSubmit)="onSubmit()">
-    <div>
-        <label>Title:</label>
-        <input id="title" type="text" formControlName="title">
-    </div>
-
-    <div>
-        <label>Summary:</label>
-        <input id="summary" type="text" formControlName="summary">
-    </div>
-
-    <div>
-        <label>Author:</label>
-        <input id="author" type="text" formControlName="author">
-    </div>
-
-    <p>
-      <button type="submit">Submit</button>
+<section class="form-container">
+    <form [formGroup]="apiForm" (ngSubmit)="onSubmit()">
+        <select class="form-input" formControlName="url">
+            <option *ngFor="let type of types" [ngValue]="type">
+                {{ type }}
+            </option>
+        </select>
+        <div class="form-input" [ngSwitch]="">
+            <label>Text:</label>
+            <input *ngIf="apiForm.value['url'] != 'Summary'" type="text" formControlName="text">
+            <textarea *ngIf="apiForm.value['url'] == 'Summary'" type="text" formControlName="text">
+            </textarea>
+        </div>
+        <p>
+          <button class="form-submit" type="submit">Submit</button>
+        </p>
+    </form>
+    <p *ngIf="data != ''">
+        {{data}}
     </p>
-   
-  </form>
-   
-  {{this.apiForm.value | json}}
+</section>

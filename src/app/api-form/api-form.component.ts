@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
@@ -8,16 +9,31 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class ApiFormComponent {
   apiForm: FormGroup;
+  types = [
+    "Title",
+    "Author",
+    "Summary"
+  ];
 
-  constructor(private fb:FormBuilder) {
+  data: string = "";
+
+  endpoint = "https://literary-genre-detector-api-t32mvyrpiq-od.a.run.app/api/predict/"
+
+  
+
+  constructor(private fb:FormBuilder, private http: HttpClient) {
     this.apiForm = this.fb.group({
-      title: this.fb.control(''),
-      summary: this.fb.control(''),
-      author: this.fb.control(''),
+      url: this.fb.control(this.types[0]),
+      text: this.fb.control('')
     });
   }
 
-  onSubmit() {
-    console.log(this.apiForm.value);
+  async onSubmit() {
+    let name = (this.apiForm.value['url'] as string).toLowerCase();
+    let url: string = this.endpoint + name + '?' + name + '=' + this.apiForm.value['text'];
+    await this.http.post<HttpResponse<string>>(url, '')
+    .subscribe((rep) =>  {
+      this.data = JSON.stringify(rep);
+    }); 
   }
 }
