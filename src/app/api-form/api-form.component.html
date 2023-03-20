@@ -1,10 +1,19 @@
 <section class="form-container">
     <form [formGroup]="apiForm" (ngSubmit)="onSubmit()">
+        <label>Prediction Type :</label>
         <select class="form-input" formControlName="url">
             <option *ngFor="let type of types" [ngValue]="type">
                 {{ type }}
             </option>
         </select>
+        <div *ngIf="apiForm.value['url'] == 'Summary' || apiForm.value['url'] == 'Title'">
+            <label>Model :</label>
+            <select class="form-input" formControlName="model">
+                <option *ngFor="let model of models" [ngValue]="model.value">
+                    {{ model.name }}
+                </option>
+            </select>
+        </div>
         <div class="form-input" [ngSwitch]="">
             <label>Text:</label>
             <input *ngIf="apiForm.value['url'] != 'Summary'" type="text" formControlName="text">

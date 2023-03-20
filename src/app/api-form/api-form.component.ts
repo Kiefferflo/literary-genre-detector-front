@@ -14,6 +14,10 @@ export class ApiFormComponent {
     "Author",
     "Summary"
   ];
+  models = [
+    { name:"Tree", value:"/tree" },
+    { name:"Neural Network", value:"/nn" }
+  ]
 
   data: string = "";
 
@@ -24,13 +28,14 @@ export class ApiFormComponent {
   constructor(private fb:FormBuilder, private http: HttpClient) {
     this.apiForm = this.fb.group({
       url: this.fb.control(this.types[0]),
+      model: this.fb.control(''),
       text: this.fb.control('')
     });
   }
 
   async onSubmit() {
     let name = (this.apiForm.value['url'] as string).toLowerCase();
-    let url: string = this.endpoint + name + '?' + name + '=' + this.apiForm.value['text'];
+    let url: string = this.endpoint + name + this.apiForm.value['model'] + '?' + name + '=' + this.apiForm.value['text'];
     await this.http.post<HttpResponse<string>>(url, '')
     .subscribe((rep) =>  {
       this.data = JSON.stringify(rep);
