@@ -14,7 +14,7 @@
                 </option>
             </select>
         </div>
-        <div class="form-input" [ngSwitch]="">
+        <div class="form-input">
             <label>Text:</label>
             <input *ngIf="apiForm.value['url'] != 'Summary'" type="text" formControlName="text">
             <textarea *ngIf="apiForm.value['url'] == 'Summary'" type="text" formControlName="text">

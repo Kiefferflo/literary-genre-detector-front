@@ -35,6 +35,9 @@ export class ApiFormComponent {
 
   async onSubmit() {
     let name = (this.apiForm.value['url'] as string).toLowerCase();
+    if (this.apiForm.value['url'] == 'Author') {
+      this.apiForm.value['model'] = ''
+    }
     let url: string = this.endpoint + name + this.apiForm.value['model'] + '?' + name + '=' + this.apiForm.value['text'];
     await this.http.post<HttpResponse<string>>(url, '')
     .subscribe((rep) =>  {
