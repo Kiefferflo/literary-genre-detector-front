@@ -1,30 +1,38 @@
-<section class="form-container">
-    <form [formGroup]="apiForm" (ngSubmit)="onSubmit()">
-        <label>Prediction Type :</label>
-        <select class="form-input" formControlName="url">
-            <option *ngFor="let type of types" [ngValue]="type">
-                {{ type }}
-            </option>
-        </select>
-        <div *ngIf="apiForm.value['url'] == 'Summary' || apiForm.value['url'] == 'Title'">
-            <label>Model :</label>
-            <select class="form-input" formControlName="model">
-                <option *ngFor="let model of models" [ngValue]="model.value">
-                    {{ model.name }}
-                </option>
-            </select>
+<div class="main">
+    <div class="head">
+        <h2>Literary Genre Detector</h2>
+        <p>Choose the prediction type and add your text, our Detector will find the corresponding genre</p>
+    </div>
+    <section class="main">
+        <div class="form-container">
+            <form [formGroup]="apiForm" (ngSubmit)="onSubmit()">
+                <label>Prediction Type :</label>
+                <select class="form-input" formControlName="url">
+                    <option *ngFor="let type of types" [ngValue]="type">
+                        {{ type }}
+                    </option>
+                </select>
+                <div *ngIf="apiForm.value['url'] == 'Summary' || apiForm.value['url'] == 'Title'">
+                    <label>Model :</label>
+                    <select class="form-input" formControlName="model">
+                        <option *ngFor="let model of models" [ngValue]="model.value">
+                            {{ model.name }}
+                        </option>
+                    </select>
+                </div>
+                <div class="form-input">
+                    <label>Text:</label>
+                    <input *ngIf="apiForm.value['url'] != 'Summary'" type="text" formControlName="text">
+                    <textarea *ngIf="apiForm.value['url'] == 'Summary'" type="text" formControlName="text">
+                    </textarea>
+                </div>
+                <p>
+                  <button class="form-submit" type="submit">Submit</button>
+                </p>
+            </form>
+            <p *ngIf="data != ''">
+                {{data}}
+            </p>
         </div>
-        <div class="form-input">
-            <label>Text:</label>
-            <input *ngIf="apiForm.value['url'] != 'Summary'" type="text" formControlName="text">
-            <textarea *ngIf="apiForm.value['url'] == 'Summary'" type="text" formControlName="text">
-            </textarea>
-        </div>
-        <p>
-          <button class="form-submit" type="submit">Submit</button>
-        </p>
-    </form>
-    <p *ngIf="data != ''">
-        {{data}}
-    </p>
-</section>
+    </section>
+</div>
