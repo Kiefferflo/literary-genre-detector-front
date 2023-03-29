@@ -27,9 +27,18 @@
                     </textarea>
                 </div>
                 <p>
-                  <button class="form-submit" type="submit">Submit</button>
+                  <button class="form-submit" (click)="clicked = true; data = ''"  type="submit">Submit</button>
                 </p>
             </form>
+        </div>
+    </section>
+    <section class="response" *ngIf="data != '' || clicked">
+        <div class="response-container">
+            <div *ngIf="clicked && data == ''">
+                <div class="filler"></div>
+                <div class="my-img-container">
+                </div>
+            </div>
             <p *ngIf="data != ''">
                 {{data}}
             </p>

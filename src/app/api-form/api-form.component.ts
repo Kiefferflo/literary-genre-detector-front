@@ -9,15 +9,19 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class ApiFormComponent {
   apiForm: FormGroup;
+
   types = [
     "Title",
     "Author",
     "Summary"
   ];
+
   models = [
     { name:"Tree", value:"/tree" },
     { name:"Neural Network", value:"/nn" }
   ]
+
+  clicked: boolean = false;
 
   data: string = "";
 
@@ -28,7 +32,7 @@ export class ApiFormComponent {
   constructor(private fb:FormBuilder, private http: HttpClient) {
     this.apiForm = this.fb.group({
       url: this.fb.control(this.types[0]),
-      model: this.fb.control(''),
+      model: this.fb.control(this.models[0].value),
       text: this.fb.control('')
     });
   }
