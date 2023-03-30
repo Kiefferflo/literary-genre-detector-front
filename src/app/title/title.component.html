@@ -1,0 +1,32 @@
+<div class="main">
+    <div class="head">
+        <h2>Title Generator</h2>
+        <p></p>
+    </div>
+    <section class="main">
+        <div class="form-container">
+            <form [formGroup]="apiForm" (ngSubmit)="onSubmit()">
+                <div class="form-input">
+                    <label>Summary:</label>
+                    <textarea type="text" formControlName="text">
+                    </textarea>
+                </div>
+                <p>
+                  <button class="form-submit" (click)="clicked = true; data = ''"  type="submit">Submit</button>
+                </p>
+            </form>
+        </div>
+    </section>
+    <section class="response" *ngIf="data != '' || clicked">
+        <div class="response-container">
+            <div *ngIf="clicked && data == ''">
+                <div class="filler"></div>
+                <div class="my-img-container">
+                </div>
+            </div>
+            <p *ngIf="data != ''">
+                {{data}}
+            </p>
+        </div>
+    </section>
+</div>

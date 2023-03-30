@@ -6,11 +6,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ApiFormComponent } from './api-form/api-form.component';
+import { TitleComponent } from './title/title.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ApiFormComponent
+    ApiFormComponent,
+    TitleComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,

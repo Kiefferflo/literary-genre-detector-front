@@ -1,5 +1,5 @@
-import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpResponse } from '@angular/common/http';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
@@ -25,9 +25,7 @@ export class ApiFormComponent {
 
   data: string = "";
 
-  endpoint = "https://literary-genre-detector-api-t32mvyrpiq-od.a.run.app/api/predict/"
-
-  
+  endpoint = "https://literary-genre-detector-api-t32mvyrpiq-od.a.run.app/api/predict/genre/"
 
   constructor(private fb:FormBuilder, private http: HttpClient) {
     this.apiForm = this.fb.group({
