@@ -15,7 +15,7 @@ export class TitleComponent {
 
   data: string = "";
 
-  endpoint = "https://literary-genre-detector-api-t32mvyrpiq-od.a.run.app/api/predict/title/summary?summary="
+  endpoint = "https://literary-genre-detector-api-t32mvyrpiq-od.a.run.app/api/generate/title/summary?summary="
 
   constructor(private fb:FormBuilder, private http: HttpClient) {
     this.apiForm = this.fb.group({

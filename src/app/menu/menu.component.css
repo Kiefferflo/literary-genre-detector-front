@@ -1,0 +1,23 @@
+.btn-container {
+    display: flex;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    margin: 5px; 
+}
+
+.link-btn {
+    margin: 10px;
+    width: auto;
+    background-color: #753232;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 0px solid #ccc;
+    border-radius: 5px;
+}
+
+.link-btn:hover {
+    background-color: #8e3e3e;
+}

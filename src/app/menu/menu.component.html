@@ -1,1 +1,4 @@
-<p>TODO: Un bouton </p>
+<div class="btn-container">
+    <button *ngIf="router.url != '/'" class="link-btn" routerLink="">Genre Detector</button>
+    <button *ngIf="router.url != '/title'" class="link-btn" routerLink="title">Title Generator</button>
+</div>
