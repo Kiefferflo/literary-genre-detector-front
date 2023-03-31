@@ -25,7 +25,7 @@ export class ApiFormComponent {
 
   data: string = "";
 
-  endpoint = "https://literary-genre-detector-api-t32mvyrpiq-od.a.run.app/api/predict/genre/"
+  endpoint = "https://literary-genre-detector-api-t32mvyrpiq-od.a.run.app/api/predict/"
 
   constructor(private fb:FormBuilder, private http: HttpClient) {
     this.apiForm = this.fb.group({
